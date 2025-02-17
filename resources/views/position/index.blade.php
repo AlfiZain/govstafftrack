@@ -1,4 +1,4 @@
-<x-app-layout title="Unit Kerja">
+<x-app-layout title="Data Pegawai">
     <x-sidebar />
     <div class="lg:pr-[70px] py-[50px] lg:ml-[320px] xl:ml-[365px] px-4 lg:pl-0">
         <!-- Top Section -->
@@ -13,39 +13,41 @@
                     </svg>
                 </a>
                 <div class="text-[32px] font-semibold text-dark">
-                    Unit Kerja
+                    Data Jabatan & Pekerjaan
                 </div>
             </div>
         </section>
 
         <section class="pt-[50px]">
-            <!-- Section Header -->
             <div class="mb-[30px]">
                 <div class="flex flex-col justify-between gap-6 sm:items-center sm:flex-row">
                     <div>
                         <p class="text-xl font-medium text-dark">
-                            List Unit Kerja
+                            List Jabatan
                         </p>
                     </div>
-                    <a href="{{ route('unit.create') }}" class="btn btn-primary">Tambah Unit Kerja</a>
+                    <a href="{{ route('position.create') }}" class="btn btn-primary">Tambah Jabatan Baru</a>
                 </div>
             </div>
 
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:gap-10 lg:gap-3">
-                @forelse ($units as $unit)
+                @forelse ($positions as $position)
                     <div class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0">
-                        <a href="{{ route('unit.show', $unit) }}"
+                        <a href="{{ route('position.show', $position) }}"
                             class="absolute inset-0 focus:ring-2 ring-primary rounded-[26px]"></a>
                         <p class="font-bold text-center text-xl text-dark">
-                            {{ $unit->name }}
+                            {{ $position->name }}
                         </p>
                         <p class="text-center text-grey">
-                            {{ $unit->work_place }}
+                            {{ $position->echelon }}
+                        </p>
+                        <p class="text-center text-grey">
+                            {{ $position->group }}
                         </p>
                     </div>
                 @empty
                     <p>
-                        Belum ada Unit Kerja
+                        Belum ada Jabatan
                     </p>
                 @endforelse
             </div>

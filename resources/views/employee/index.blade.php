@@ -22,58 +22,65 @@
             <!-- Section Header -->
             <div class="mb-[30px]">
                 <div class="flex flex-col justify-between gap-6 sm:items-center sm:flex-row">
-                    <p class="text-xl text-dark">Tabel Pegawai</p>
-                    <a href="{{ route('employee.create') }}" class="btn btn-primary">Add Employee</a>
+                    <p class="text-xl font-medium text-dark">Tabel Pegawai</p>
+                    <div class="flex flex-row gap-4 justify-between">
+                        <a href="{{ route('employee.create') }}" class="btn btn-primary">Tambah Pegawai</a>
+                        <a href="{{ route('employee.print') }}" class="btn btn-secondary">Cetak Tabel</a>
+                    </div>
                 </div>
             </div>
-            <div class="container">
-                <h2>Data Pegawai</h2>
-                <table id="pegawaiTable" class="display">
-                    <thead>
-                        <tr>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>Tempat Lahir</th>
-                            <th>Alamat</th>
-                            <th>Tanggal Lahir</th>
-                            <th>L/P</th>
-                            <th>Gol</th>
-                            <th>Eselon</th>
-                            <th>Jabatan</th>
-                            <th>Tempat Tugas</th>
-                            <th>Agama</th>
-                            <th>Unit Kerja</th>
-                            <th>No. HP</th>
-                            <th>NPWP</th>
-                            <th>Aksi</th>
+            <div class="relative overflow-x-auto">
+                <table id="pegawaiTable" class="w-full text-sm text-left text-gray-700 ">
+                    <thead class="text-xs text-white uppercase bg-blue-500 ">
+                        <tr class="border-b text-center">
+                            <th class="px-4 py-3">NIP</th>
+                            <th class="px-4 py-3">Nama</th>
+                            <th class="px-4 py-3">Tempat Lahir</th>
+                            <th class="px-4 py-3">Alamat</th>
+                            <th class="px-4 py-3">Tanggal Lahir</th>
+                            <th class="px-4 py-3">L/P</th>
+                            <th class="px-4 py-3">Gol</th>
+                            <th class="px-4 py-3">Eselon</th>
+                            <th class="px-4 py-3">Jabatan</th>
+                            <th class="px-4 py-3">Tempat Tugas</th>
+                            <th class="px-4 py-3">Agama</th>
+                            <th class="px-4 py-3">Unit Kerja</th>
+                            <th class="px-4 py-3">No. HP</th>
+                            <th class="px-4 py-3">NPWP</th>
+                            <th class="px-4 py-3">Detail</th>
+                            <th class="px-4 py-3">Ubah</th>
+                            <th class="px-4 py-3">Hapus</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($employees as $employee)
-                            <tr>
-                                <td>{{ $employee->nip }}</td>
-                                <td>{{ $employee->name }}</td>
-                                <td>{{ $employee->place_of_birth }}</td>
-                                <td>{{ $employee->address }}</td>
-                                <td>{{ $employee->date_of_birth }}</td>
-                                <td>{{ $employee->gender }}</td>
-                                <td>{{ $employee->position->group }}</td>
-                                <td>{{ $employee->position->echelon }}</td>
-                                <td>{{ $employee->position->name }}</td>
-                                <td>{{ $employee->unit->work_place }}</td>
-                                <td>{{ $employee->religion }}</td>
-                                <td>{{ $employee->unit->name }}</td>
-                                <td>{{ $employee->phone }}</td>
-                                <td>{{ $employee->npwp }}</td>
-                                <td>
+                            <tr class="bg-white border-b border-gray-200">
+                                <td class="px-4 py-4">{{ $employee->nip }}</td>
+                                <td class="px-4 py-4">{{ $employee->name }}</td>
+                                <td class="px-4 py-4">{{ $employee->place_of_birth }}</td>
+                                <td class="px-4 py-4">{{ $employee->address }}</td>
+                                <td class="px-4 py-4">{{ $employee->date_of_birth }}</td>
+                                <td class="px-4 py-4">{{ $employee->gender }}</td>
+                                <td class="px-4 py-4">{{ $employee->position->group }}</td>
+                                <td class="px-4 py-4">{{ $employee->position->echelon }}</td>
+                                <td class="px-4 py-4">{{ $employee->position->name }}</td>
+                                <td class="px-4 py-4">{{ $employee->unit->work_place }}</td>
+                                <td class="px-4 py-4">{{ $employee->religion }}</td>
+                                <td class="px-4 py-4">{{ $employee->unit->name }}</td>
+                                <td class="px-4 py-4">{{ $employee->phone }}</td>
+                                <td class="px-4 py-4">{{ $employee->npwp }}</td>
+                                <td class="px-4 py-4">
                                     <a href="{{ route('employee.show', $employee) }}"
                                         class="btn btn-secondary">Detail</a>
+                                </td>
+                                <td class="px-4 py-4">
                                     <a href="{{ route('employee.edit', $employee) }}" class="btn btn-warning">Ubah</a>
-                                    <form action="{{ route('employee.destroy', $employee->id) }}" method="POST"
-                                        style="display:inline;">
+                                </td>
+                                <td class="px-4 py-4">
+                                    <form action="{{ route('employee.destroy', $employee->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"
+                                        <button type="submit" class="btn btn-danger hover:cursor-pointer"
                                             onclick="return confirm('Apa Anda yakin?')">Hapus</button>
                                     </form>
                                 </td>

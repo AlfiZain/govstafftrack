@@ -1,7 +1,7 @@
 <x-app-layout title="Data Pegawai">
     <div class="pt-[50px] md:px-[50px] flex justify-end items-center px-4">
         <a href="{{ route('employee.index') }}">
-            <img src="../assets/svgs/ric-close-white.svg" alt="" />
+            <img src="{{ asset('assets/svgs/ric-close-white.svg') }}" alt="" />
         </a>
     </div>
     <section class="py-[70px] flex flex-col items-center justify-center px-4">
@@ -22,10 +22,6 @@
             <div class="form-group">
                 <label for="photo" class="text-grey">Foto Pegawai</label>
                 <input name="photo" id="photo" type="file" class="input-field" required />
-            </div>
-            <div class="form-group">
-                <label for="email" class="text-grey">Alamat Email</label>
-                <input name="email" id="email" type="email" class="input-field" required />
             </div>
             <div class="form-group">
                 <label for="place_of_birth" class="text-grey">Tempat Lahir</label>
@@ -69,21 +65,23 @@
             <div class="form-group">
                 <label for="unit_id" class="text-grey">Pilih Jabatan</label>
                 <select name="unit_id" id="unit_id" class="appearance-none input-field form-icon-chevron_down">
-                    <option value="1" selected>Product Designer</option>
-                    <option value="2">Website Developer</option>
-                    <option value="3">Executive Manager</option>
-                    <option value="4">iOS Engineer</option>
+                    <option value="" disabled selected>Pilih Jabatan</option>
+                    @foreach ($units as $unit)
+                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="position_id" class="text-grey">Pilih Unit Kerja</label>
                 <select name="position_id" id="position_id"
                     class="appearance-none input-field form-icon-chevron_down">
-                    <option value="1" selected>DISNAKER</option>
-                    <option value="2">MENHAN</option>
+                    <option value="" disabled selected>Pilih Unit Kerja</option>
+                    @foreach ($positions as $position)
+                        <option value="{{ $position->id }}">{{ $position->name }}</option>
+                    @endforeach
                 </select>
             </div>
-            <button type="submit" class="w-full btn btn-primary mt-[14px] hover:pointer">
+            <button type="submit" class="w-full btn btn-primary mt-[14px] hover:cursor-pointer">
                 Kirim </button>
             <a href="{{ route('employee.index') }}" class="w-full btn btn-danger mt-[14px]"> Batal </a>
         </form>

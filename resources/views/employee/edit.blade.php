@@ -1,12 +1,15 @@
 <x-app-layout title="Data Pegawai">
     <div class="pt-[50px] md:px-[50px] flex justify-end items-center px-4">
-        <a href="#" onclick="history.back()">
-            <img src="../assets/svgs/ric-close-white.svg" alt="" />
+        <a href="{{ route('employee.index') }}">
+            <img src="{{ asset('assets/svgs/ric-close-white.svg') }}" alt="" />
         </a>
     </div>
     <section class="py-[70px] flex flex-col items-center justify-center px-4">
         <p class="text-[32px] font-semibold text-dark">Ubah Data Pegawai</p>
-        <form class="w-full card">
+        <form class="w-full card" action="{{ route('employee.update', $employee) }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
             <p class="mt-6 mb-1 text-lg font-semibold">
                 Data Diri Pegawai
             </p>
@@ -21,11 +24,6 @@
             <div class="form-group">
                 <label for="photo" class="text-grey">Foto Pegawai</label>
                 <input name="photo" id="photo" type="file" class="input-field" />
-            </div>
-            <div class="form-group">
-                <label for="email" class="text-grey">Alamat Email</label>
-                <input name="email" id="email" type="email" class="input-field"
-                    value="{{ $employee->email }}" />
             </div>
             <div class="form-group">
                 <label for="place_of_birth" class="text-grey">Tempat Lahir</label>
@@ -78,10 +76,10 @@
                 <label for="unit_id" class="text-grey">Pilih Jabatan</label>
                 <select name="unit_id" id="unit_id" class="appearance-none input-field form-icon-chevron_down">
                     <option value="" disabled selected>Pilih Jabatan</option>
-                    <option value="1" {{ $employee->unit_id == 1 ? 'selected' : '' }}>Product Designer</option>
-                    <option value="2" {{ $employee->unit_id == 2 ? 'selected' : '' }}>Website Developer</option>
-                    <option value="3" {{ $employee->unit_id == 3 ? 'selected' : '' }}>Executive Manager</option>
-                    <option value="4" {{ $employee->unit_id == 4 ? 'selected' : '' }}>iOS Engineer</option>
+                    @foreach ($units as $unit)
+                        <option value="{{ $unit->id }}" {{ $employee->unit_id == $unit->id ? 'selected' : '' }}>
+                            {{ $unit->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
@@ -89,12 +87,16 @@
                 <select name="position_id" id="position_id"
                     class="appearance-none input-field form-icon-chevron_down">
                     <option value="" disabled selected>Pilih Unit Kerja</option>
-                    <option value="1" {{ $employee->position_id == 1 ? 'selected' : '' }}>DISNAKER</option>
-                    <option value="2" {{ $employee->position_id == 2 ? 'selected' : '' }}>MENHAN</option>
+                    @foreach ($positions as $position)
+                        <option value="{{ $position->id }}"
+                            {{ $employee->position_id == $position->id ? 'selected' : '' }}>
+                            {{ $position->name }}</option>
+                    @endforeach
                 </select>
             </div>
-            <a href="{{ route('employee.store') }}" class="w-full btn btn-primary mt-[14px]"> Kirim </a>
-            <a href="#" onclick="history.back()" class="w-full btn btn-cancel mt-[14px]"> Batal </a>
+            <button type="submit" class="w-full btn btn-primary mt-[14px] hover:cursor-pointer">
+                Update </button>
+            <a href="{{ route('employee.index') }}" class="w-full btn btn-danger mt-[14px]"> Batal </a>
         </form>
     </section>
 </x-app-layout>

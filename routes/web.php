@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('employee/print', [EmployeeController::class, 'print'])->name('employee.print');
     Route::resource('employee', EmployeeController::class);
 
     Route::resource('unit', UnitController::class);

@@ -9,6 +9,10 @@ use App\Models\Position;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\LaravelPdf\Enums\Format;
+use Spatie\LaravelPdf\Enums\Orientation;
+
+use function Spatie\LaravelPdf\Support\pdf;
 
 class EmployeeController extends Controller
 {
@@ -44,9 +48,8 @@ class EmployeeController extends Controller
             }
 
             Employee::create($validateData);
-
-            return redirect()->route('employee.index');
         });
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -54,10 +57,8 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        $position = Position::find($employee->position_id);
-        $unit = Unit::find($employee->unit_id);
 
-        return view('employee.show', compact(['employee', 'position', 'unit']));
+        return view('employee.show', compact('employee'));
     }
 
     /**
@@ -83,9 +84,8 @@ class EmployeeController extends Controller
             }
 
             $employee->update($validateData);
-
-            return redirect()->route('employee.show', $employee);
         });
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -96,8 +96,18 @@ class EmployeeController extends Controller
         DB::transaction(function () use ($id) {
             $employee = Employee::find($id);
             $employee->delete();
-
-            return redirect()->route('employee.index');
         });
+        return redirect()->route('employee.index');
+    }
+
+    public function print()
+    {
+        $employees = Employee::all();
+        return pdf()
+            ->view('employee.print', compact('employees'))
+            ->name('Data Pegawai ' . now() . '.pdf')
+            ->format(Format::A4)
+            ->orientation(Orientation::Landscape)
+            ->download();
     }
 }
