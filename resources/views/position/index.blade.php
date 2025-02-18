@@ -32,7 +32,7 @@
 
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:gap-10 lg:gap-3">
                 @forelse ($positions as $position)
-                    <div class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0">
+                    <div class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0 hover:shadow-lg">
                         <a href="{{ route('position.show', $position) }}"
                             class="absolute inset-0 focus:ring-2 ring-primary rounded-[26px]"></a>
                         <p class="font-bold text-center text-xl text-dark">

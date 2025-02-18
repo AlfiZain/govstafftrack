@@ -31,7 +31,7 @@
             </div>
             <div class="relative overflow-x-auto">
                 <table id="pegawaiTable" class="w-full text-sm text-left text-gray-700 ">
-                    <thead class="text-xs text-white uppercase bg-blue-500 ">
+                    <thead class="text-xs text-white uppercase bg-blue-500">
                         <tr class="border-b text-center">
                             <th class="px-4 py-3">NIP</th>
                             <th class="px-4 py-3">Nama</th>
@@ -54,7 +54,7 @@
                     </thead>
                     <tbody>
                         @foreach ($employees as $employee)
-                            <tr class="bg-white border-b border-gray-200">
+                            <tr class="bg-white border-b border-gray-200 hover:bg-slate-200">
                                 <td class="px-4 py-4">{{ $employee->nip }}</td>
                                 <td class="px-4 py-4">{{ $employee->name }}</td>
                                 <td class="px-4 py-4">{{ $employee->place_of_birth }}</td>

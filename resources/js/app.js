@@ -1,5 +1,5 @@
 import "./bootstrap";
-import "./sidebarToggler.js";
+import "./main.js";
 
 import Alpine from "alpinejs";
 

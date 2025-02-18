@@ -1,4 +1,4 @@
-<x-app-layout title="Unit Kerja">
+<x-app-layout title="Data Unit Kerja">
     <x-sidebar />
     <div class="lg:pr-[70px] py-[50px] lg:ml-[320px] xl:ml-[365px] px-4 lg:pl-0">
         <!-- Top Section -->
@@ -33,7 +33,7 @@
 
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:gap-10 lg:gap-3">
                 @forelse ($units as $unit)
-                    <div class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0">
+                    <div class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0 hover:shadow-lg">
                         <a href="{{ route('unit.show', $unit) }}"
                             class="absolute inset-0 focus:ring-2 ring-primary rounded-[26px]"></a>
                         <p class="font-bold text-center text-xl text-dark">

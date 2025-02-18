@@ -30,43 +30,43 @@
                     </div>
                 </div>
 
-                <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-11">
+                <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-11 mt-4">
                     <div class="card !gap-y-10 min-h-[200px]">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-grey">Employees</p>
+                                <p class="text-grey">Jumlah Karyawan</p>
                                 <div class="text-[32px] font-bold text-dark mt-[6px]">
-                                    0
+                                    {{ $employees }}
                                 </div>
                             </div>
-                            <a href="employee_create.html">
-                                <img src="../assets/svgs/ric-plus.svg" alt="">
+                            <a href="{{ route('employee.index') }}">
+                                <img src="{{ asset('assets/svgs/ric-plus.svg') }}" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="card !gap-y-10 min-h-[200px]">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-grey">Teams</p>
+                                <p class="text-grey">Jumlah Unit Kerja</p>
                                 <div class="text-[32px] font-bold text-dark mt-[6px]">
-                                    0
+                                    {{ $units }}
                                 </div>
                             </div>
-                            <a href="#">
-                                <img src="../assets/svgs/ric-plus.svg" alt="">
+                            <a href="{{ route('unit.index') }}">
+                                <img src="{{ asset('assets/svgs/ric-plus.svg') }}" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="card !gap-y-10 min-h-[200px]">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-grey">Projects</p>
+                                <p class="text-grey">Jumlah Jabatan</p>
                                 <div class="text-[32px] font-bold text-dark mt-[6px]">
-                                    0
+                                    {{ $positions }}
                                 </div>
                             </div>
-                            <a href="#">
-                                <img src="../assets/svgs/ric-plus.svg" alt="">
+                            <a href="{{ route('position.index') }}">
+                                <img src="{{ asset('assets/svgs/ric-plus.svg') }}" alt="">
                             </a>
                         </div>
                     </div>
