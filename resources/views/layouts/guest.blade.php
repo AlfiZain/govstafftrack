@@ -25,7 +25,7 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
-            <a href="#"
+            <a href="/"
                 class="flex justify-center font-extrabold text-dark text-2xl transition duration-300  hover:scale-105">
                 Goverment Staff Tracking
             </a>

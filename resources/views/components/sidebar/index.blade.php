@@ -4,7 +4,7 @@
 
     <div class="px-6 py-[50px] gap-y-[50px] flex flex-col">
         <div class="flex items-center justify-between">
-            <a href="#"
+            <a href="/"
                 class="flex justify-center font-extrabold text-dark text-2xl transition duration-300  hover:scale-105">
                 Goverment Staff Tracking
             </a>
